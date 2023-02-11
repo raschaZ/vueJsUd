@@ -2,7 +2,7 @@
   <div >
     hi
     <Greeting :age="age"/>
-    <User :age="age" @age-change="updateAge"/>
+    <User :age="age" @age-change="updateAge" :ageChangeFn="updateAgeCB"/>
 
   </div>
 
@@ -25,6 +25,9 @@ export default {
   },
   methods :  {
     updateAge(numb){
+      this.age+=numb
+    },
+    updateAgeCB(numb){
       this.age+=numb
     }
   }
