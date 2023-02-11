@@ -1,11 +1,12 @@
 <template>
-    <p>{{msg}}</p>
-    <div class="example">hi</div>
+    <p v-if="age > 25">{{age}}</p>
+    <p v-else>less then 25</p>
 </template>
   
   <script >
   export default{
     name:'Greeting',
+    props: ["age"],
     data(){
       return {
         msg : "hello world !"
