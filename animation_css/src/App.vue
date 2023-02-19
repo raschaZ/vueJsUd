@@ -15,6 +15,7 @@
     @before-leave="before-leave"
     @leave="leave"
     @after-leave="after-leave"
+    :css="false"
     >
     <h2 v-if="flag" key="main">Hello JS World!</h2>
     <h2 v-else="flag" key="secondary">Hi JS World!</h2>
