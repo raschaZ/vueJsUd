@@ -1,14 +1,14 @@
 <template>
   <button type="button" @click="flag= !flag">Toggle</button>
-  <transition name="fade" mode="out-in">
+  <!-- <transition name="fade" mode="out-in">
     <h2 v-if="flag" key="main">Hello World!</h2>
     <h2 v-else="flag" key="secondary">Hi World!</h2>
   </transition>
   <transition name="zoom" type="animation" appear>
     <h2 v-if="flag" key="main">Hello World!</h2>
     <h2 v-else="flag" key="secondary">Hi World!</h2>
-  </transition>
-    <transition
+  </transition> -->
+    <transition  mode="out-in" appear
     @before-enter="before-enter"
     @enter="enter"
     @after-enter="after-enter"
@@ -35,7 +35,10 @@ export default {
     },
     enter(el,done){
     console.log('enter event fierd',el); 
-    done();
+    const  animation =el.animate([{transform:"scale3d(0,0,0)"},{}],{duration : 1000,})
+    animation.onfinish =()=>{
+      done();
+    }
     },
     afterEnter(el){
     console.log('afterEnter event fierd',el); 
@@ -44,9 +47,11 @@ export default {
     console.log('beforeLeave event fierd',el); 
     },
     leave(el,done){
-    console.log('leave event fierd',el); 
-    done();
-    },
+      console.log('enter event fierd',el); 
+    const  animation =el.animate([{},{transform:"scale3d(0,0,0)"}],{duration : 1000,})
+    animation.onfinish =()=>{
+      done();
+    }    },
     afterLeave(el){
     console.log('afterLeave event fierd',el); 
     },
