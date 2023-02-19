@@ -8,6 +8,17 @@
     <h2 v-if="flag" key="main">Hello World!</h2>
     <h2 v-else="flag" key="secondary">Hi World!</h2>
   </transition>
+    <transition
+    @before-enter="before-enter"
+    @enter="enter"
+    @after-enter="after-enter"
+    @before-leave="before-leave"
+    @leave="leave"
+    @after-leave="after-leave"
+    >
+    <h2 v-if="flag" key="main">Hello JS World!</h2>
+    <h2 v-else="flag" key="secondary">Hi JS World!</h2>
+  </transition>
 </template>
 
 <script>
@@ -17,6 +28,28 @@ export default {
     return {
       flag : true ,
     }
+  },
+  methods: {
+    beforeEnter(el){
+    console.log('beforeEnter event fierd',el); 
+    },
+    enter(el,done){
+    console.log('enter event fierd',el); 
+    done();
+    },
+    afterEnter(el){
+    console.log('afterEnter event fierd',el); 
+    },
+    beforeLeave(el){
+    console.log('beforeLeave event fierd',el); 
+    },
+    leave(el,done){
+    console.log('leave event fierd',el); 
+    done();
+    },
+    afterLeave(el){
+    console.log('afterLeave event fierd',el); 
+    },
   },
 }
 </script>
