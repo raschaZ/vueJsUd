@@ -112,5 +112,4 @@ h2{
     transform: scale(0,0);
   }
 }
-
 </style>
