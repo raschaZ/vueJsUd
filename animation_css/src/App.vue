@@ -8,7 +8,7 @@
     <h2 v-if="flag" key="main">Hello World!</h2>
     <h2 v-else="flag" key="secondary">Hi World!</h2>
   </transition> -->
-    <transition  mode="out-in" appear
+    <!-- <transition  mode="out-in" appear
     @before-enter="before-enter"
     @enter="enter"
     @after-enter="after-enter"
@@ -19,7 +19,11 @@
     >
     <h2 v-if="flag" key="main">Hello JS World!</h2>
     <h2 v-else="flag" key="secondary">Hi JS World!</h2>
-  </transition>
+  </transition> -->
+  <button @click="addItem"> Add</button>
+  <ul>
+    <li v-for="(number,index) in numbers" :key="number" @click="remouveItem(index)">{{ number }}</li>
+  </ul>
 </template>
 
 <script>
@@ -28,6 +32,7 @@ export default {
   data() {
     return {
       flag : true ,
+      numbers: [1,2,3,4,5,6,7,8,9],
     }
   },
   methods: {
@@ -56,11 +61,23 @@ export default {
     afterLeave(el){
     console.log('afterLeave event fierd',el); 
     },
+    addItem(){
+     const num = Math.floor(Math.random()*100 +1);
+     const index = Math.floor(Math.random()* this.numbers.length);
+     this.numbers.splice(index,0,num);
+    },
+    remouveItem(index){
+      this.numbers.splice(index,1);
+    },
   },
 }
 </script>
 
 <style>
+li{
+  font-size: 22px ;
+  cursor: pointer;
+}
 .fade-enter-from{
   opacity : 0 ;
 }
